@@ -32,19 +32,24 @@ public class Bat : MonoBehaviour
     //Target function
     public void Targetting()
     {
-        Debug.DrawRay(this.transform.position, new Vector3(0, 0, 1 * targetRange), Color.red);
-        Debug.DrawRay(this.transform.position, new Vector3(-5, 0, 1 * targetRange), Color.red);
-        Debug.DrawRay(this.transform.position, new Vector3(5, 0, 1 * targetRange), Color.red);
-        Debug.DrawRay(this.transform.position, new Vector3(-10, 0, 1 * targetRange), Color.red);
-        Debug.DrawRay(this.transform.position, new Vector3(10, 0, 1 * targetRange), Color.red);
+        Debug.DrawRay(this.transform.position, transform.forward * targetRange, Color.red);
+        //Debug.DrawRay(this.transform.position, -transform.right * 5 + transform.forward * targetRange, Color.red);
+        //Debug.DrawRay(this.transform.position, transform.right * 5 + transform.forward * targetRange, Color.red);
+        //Debug.DrawRay(this.transform.position, -transform.right * 10 + transform.forward * targetRange, Color.red);
+        Debug.DrawRay(this.transform.position, transform.right * 10 + transform.forward * targetRange, Color.red);
 
         //we just want to start with a simple raycast
         RaycastHit hitInfo;
-        if (Physics.Raycast(this.transform.position, new Vector3(0,0,1 * targetRange),out hitInfo, targetRange) ||
-            Physics.Raycast(this.transform.position, new Vector3(-5, 0, 1 * targetRange), out hitInfo, targetRange) ||
-            Physics.Raycast(this.transform.position, new Vector3(-10, 0, 1 * targetRange), out hitInfo, targetRange) ||
-            Physics.Raycast(this.transform.position, new Vector3(5, 0, 1 * targetRange), out hitInfo, targetRange) ||
-            Physics.Raycast(this.transform.position, new Vector3(10, 0, 1 * targetRange), out hitInfo, targetRange))
+        /*
+        if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, targetRange) ||
+            Physics.Raycast(this.transform.position, -transform.right * 5 + transform.forward * targetRange, out hitInfo, targetRange) ||
+            Physics.Raycast(this.transform.position, transform.right * 5 + transform.forward * targetRange, out hitInfo, targetRange) ||
+            Physics.Raycast(this.transform.position, -transform.right * 10 + transform.forward * targetRange, out hitInfo, targetRange) ||
+            Physics.Raycast(this.transform.position, transform.right * 10 + transform.forward * targetRange, out hitInfo, targetRange))
+        */
+
+        if (Physics.Raycast(this.transform.position, transform.forward, out hitInfo, targetRange) ||
+            Physics.Raycast(this.transform.position, transform.right * 10 + transform.forward * targetRange, out hitInfo, targetRange))
         {
             //we need to check if the raycast hit something and if it was what we want to find
             //in this case the bat needs to find the player
