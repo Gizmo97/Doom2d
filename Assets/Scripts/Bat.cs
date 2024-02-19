@@ -36,7 +36,7 @@ public class Bat : MonoBehaviour
         //Debug.DrawRay(this.transform.position, -transform.right * 5 + transform.forward * targetRange, Color.red);
         //Debug.DrawRay(this.transform.position, transform.right * 5 + transform.forward * targetRange, Color.red);
         //Debug.DrawRay(this.transform.position, -transform.right * 10 + transform.forward * targetRange, Color.red);
-        Debug.DrawRay(this.transform.position, transform.right * 10 + transform.forward * targetRange, Color.red);
+        Debug.DrawRay(this.transform.position, (transform.right * 10 + transform.forward * targetRange).normalized, Color.red);
 
         //we just want to start with a simple raycast
         RaycastHit hitInfo;
